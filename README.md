@@ -2,13 +2,13 @@
 A tool which automatically converts sentences with kanji to sentences with furigana formatted for anki.
 
 # How to Use
-python kanji\_to\_furigana.py --paste\_key "\<ctrl>+\<shift>+x"
+python kanji\_to\_furigana.py --paste\_key "\<ctrl>+\<cmd>+v"
 or 
-pythonw kanji\_to\_furigana.py --paste\_key "\<ctrl>+\<shift>+x"
+pythonw kanji\_to\_furigana.py --paste\_key "\<ctrl>+\<cmd>+v"
 to run the script in the background on windows.
 
 Copy anything into your clipboard using ctrl+c. If it has kanji in it, this script will scrape the furigana for it
-from jisho.org and can be pasted using ctrl+shift+x by default.
+from jisho.org and can be pasted using ctrl+shift+cmd (cmd is the windows key on windows) by default.
 
 eg: if we copy: 
 よく平気でいられますね
@@ -18,7 +18,7 @@ This script will paste:
 
 
 # Changing the paste keybind 
-You can change the keybind according to other things like "\<cmd>+\<ctrl>+v" where cmd is the windows key.
+You can change the keybind according to other things like "\<cmd>+\<alt>+v" where cmd is the windows key.
 For a full list of keys, see [here](https://pynput.readthedocs.io/en/latest/keyboard.html#pynput.keyboard.Key)
 
 CAUTION: Do not use ctrl+v as a keybind, because that will cause the contents to paste more than once. 

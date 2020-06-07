@@ -94,7 +94,7 @@ arg_parser.add_argument('--paste_key',
                         help='the key press to paste the furigana contents.'
                         ' eg: ./kanji_to_furigana --paste_key <cmd>+<shift>+v - '
                         'See https://pynput.readthedocs.io/en/latest/keyboard.html#pynput.keyboard.Key for more info.',
-                        default='<ctrl>+<shift>+x'
+                        default='<ctrl>+<cmd>+v'
                         )
 arg_parser.add_argument('-e', action='store_true', default=False, dest='exit_key', help='Allows program to quit by pressing <ctrl>+d')
 args = arg_parser.parse_args()
