@@ -16,6 +16,8 @@ eg: if we copy:
 This script will paste: 
 よく 平気\[へいき\]でいられますね
 
+# How to stop the script
+The script can be stopped by pressing \<ctrl>+\<cmd>+\<alt>+d
 
 # Changing the paste keybind 
 You can change the keybind according to other things like "\<cmd>+\<alt>+v" where cmd is the windows key.
