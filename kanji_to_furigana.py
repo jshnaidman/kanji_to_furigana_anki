@@ -71,10 +71,10 @@ class KanjiToFurigana():
             if(furigana):
                 orig_iter = iter(reversed(word_orig))
                 furi_iter = iter(reversed(furigana))
+                num_common = 0
                 try:
                     orig_char = next(orig_iter)
                     furi_char = next(furi_iter)
-                    num_common = 0
                     while (orig_char == furi_char):
                         num_common += 1
                         orig_char = next(orig_iter)

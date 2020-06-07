@@ -1,18 +1,22 @@
 # kanji\_to\_furigana.py
-A tool which automatically converts sentences with kanji to sentences with furigana formatted for anki.
+A tool which automatically converts sentences with kanji to sentences with furigana formatted for Anki. For example:
+
+if we copy: よく平気でいられますね
+This script will allow one to paste: よく 平気\[へいき\]でいられますね
+
+with a custom keybind which is `ctrl+cmd+v` by default.
+
+Any Anki fields with `furigana:` preceded by it will display the Furigana on top.
 
 # How to Use
 
     python kanji_to_furigana.py --paste_key "<ctrl>+<cmd>+v"
 
 Copy anything into your clipboard using ctrl+c. If it has kanji in it, this script will scrape the furigana for it
-from jisho.org and can be pasted using `ctrl+cmd+v` (`cmd` is the windows key on windows).
+from jisho.org. The formatted furigana and can be pasted using `ctrl+cmd+v` (`cmd` is the windows key on windows).
 
-eg: if we copy: 
-よく平気でいられますね
 
-This script will paste: 
-よく 平気\[へいき\]でいられますね
+![](demo.gif)
 
 # Requirements
 This script was developped with Python 3.8.3. The other requirements can be downloaded via: 
