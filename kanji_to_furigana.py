@@ -62,37 +62,19 @@ class KanjiToFurigana():
         word_list = [li for li in word_ul.contents if li.name == 'li']
         furigana_sentence = ""
         for word_li in word_list:
-            furigana = word_li.find("span",
-                                    class_="japanese_word__furigana_wrapper").text
-            furigana = self.not_jap_reg.sub("", furigana)
-            word_orig = word_li.find("span",
-                                     class_="japanese_word__text_wrapper").text
-            word_orig = self.not_jap_reg.sub("", word_orig)
-            if(furigana):
-                orig_iter = iter(reversed(word_orig))
-                furi_iter = iter(reversed(furigana))
-                num_common = 0
-                try:
-                    orig_char = next(orig_iter)
-                    furi_char = next(furi_iter)
-                    while (orig_char == furi_char):
-                        num_common += 1
-                        orig_char = next(orig_iter)
-                        furi_char = next(furi_iter)
-                except StopIteration:
-                    pass
-                if (num_common != 0):
-                    furigana = furigana[:-num_common]
-                    kanji_part = word_orig[:-num_common]
-                    rest = word_orig[-num_common:]
-                else:
-                    kanji_part = word_orig
-                    rest = ""
-
-                furigana_sentence += "{}[{}]{}".format(
-                    kanji_part, furigana, rest)
+            furigana_wrapper = word_li.find("span",class_="japanese_word__furigana_wrapper")
+            span_children = [child for child in furigana_wrapper.children if child.name == 'span']
+            if (span_children):
+                for span in span_children:
+                    if span.name != 'span':
+                        continue
+                    furigana = span.attrs.get('data-text')
+                    if (furigana and furigana != span.text):
+                        furigana_sentence += " {}[{}]".format(furigana, span.text)
+                    else:
+                        furigana_sentence += span.text
             else:
-                furigana_sentence += word_orig
+                furigana_sentence += word_li.find("span",class_="japanese_word__text_wrapper").text
         return furigana_sentence
 
     def _get_furigana_from_main_result(self, soup):
@@ -112,7 +94,7 @@ class KanjiToFurigana():
         furigana_sentence = ""
         for char in text:
             if (furigana_idx < len(furigana_list) and self.kanji_reg.search(char)):
-                furigana_sentence += "{}[{}]".format(
+                furigana_sentence += " {}[{}]".format(
                     char, furigana_list[furigana_idx])
                 furigana_idx += 1
             else:
@@ -146,7 +128,8 @@ class KanjiToFurigana():
         # and me getting the clipboard here
         time.sleep(0.1)
         text_clipboard = clipboard.paste()
-
+        # This just removes extra formatting for convenience
+        clipboard.copy(text_clipboard) 
         if self.kanji_reg.search(text_clipboard):
             self.furigana_clipboard = self.get_furigana(text_clipboard)
 
