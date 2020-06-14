@@ -10,9 +10,9 @@ Any Anki fields with `furigana:` preceded by it will display the Furigana on top
 
 # How to Use
 
-    python kanji_to_furigana.py --paste_key "<ctrl>+<cmd>+v"
+    python kanji_to_furigana.py --paste_key "<ctrl>+<cmd>+v" --copy_key "<ctrl>+c"
 
-Copy anything into your clipboard using ctrl+c. If it has kanji in it, this script will scrape the furigana for it
+Copy anything into your clipboard using the keybind for copy on your OS. If it has kanji in it, this script will scrape the furigana for it
 from jisho.org. The formatted furigana and can be pasted using `ctrl+cmd+v` (`cmd` is the windows key on windows).
 
 
@@ -25,7 +25,7 @@ This script was developped with Python 3.8.3. The other requirements can be down
 
 # Detailed Steps for Non-Progammer Windows Users
 - Install Python [here](https://www.python.org/downloads/).
-- Clone this repo or download it unpack the zip file.
+- Clone this repo or download it and unpack the zip file.
 - Navigate to the script in windows explorer and type `cmd` in the path bar to open up cmd in the location of the script.
 - run `pip install -r requirements.txt`
 - To have this python script run in the background, run `pythonw kanji_to_furigana.py --paste_key "<ctrl>+<cmd>+v"`
