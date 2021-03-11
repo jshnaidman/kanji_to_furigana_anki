@@ -23,7 +23,7 @@ class KanjiToFurigana():
         self.lock = Lock()
         self.kanji_reg = re.compile(r'[㐀-䶵一-鿋豈-頻]+')
         self.japanese_reg = re.compile(
-            r'[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f\(\)]+')
+            r'[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f\(\)\u3000-\u303f]+')
         self.furigana_res_reg = re.compile(r'(.*)\((.*)\)')
         self.on_copy()
 
@@ -127,6 +127,8 @@ arg_parser.add_argument('--copy_key',
 args = arg_parser.parse_args()
 
 kanji_to_furigana = KanjiToFurigana()
+
+
 
 hotkeys = {
     args.copy_key: kanji_to_furigana.on_copy,
