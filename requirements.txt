@@ -1,4 +1,4 @@
 pynput==1.6.8
 clipboard==0.0.4
-requests==2.23.0
+requests==2.31.0
 beautifulsoup4==4.9.1
